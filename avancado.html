@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Página técnica sobre Detecção Sísmica no Sistema Solar" />
+    <meta name="author" content="" />
+    <title>Detecção Sísmica no Sistema Solar - Versão Técnica</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Custom Google font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+</head>
+<body class="d-flex flex-column h-100 bg-light pagina-sismica">
+    <main class="flex-shrink-0">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+            <div class="container px-5">
+                <a class="navbar-brand" href="index.html"><span class="fw-bolder text-primary">Exploração Espacial</span></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Alternar navegação"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
+                        <li class="nav-item"><a class="nav-link text-light" href="#introducao">Introdução</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#metodologias">Metodologias</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#dados">Dados e Análises</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#desafios">Desafios Técnicos</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="#conclusao">Conclusão</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Page Content-->
+        <div class="container px-5 my-5">
+            <div class="text-center mb-5">
+                <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Detecção Sísmica no Sistema Solar</span></h1>
+            </div>
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-10">
+                    <!-- Introduction Section-->
+                    <section id="introducao" class="mb-5">
+                        <h2 class="fw-bolder mb-4 text-primary">Introdução</h2>
+                        <p class="lead text-white">
+                            A detecção sísmica em corpos planetários é uma ferramenta crucial para a compreensão da estrutura interna e dinâmica geológica de planetas e satélites naturais. Este documento aborda metodologias avançadas de análise de dados sísmicos obtidos de missões espaciais, bem como os desafios técnicos enfrentados nessa área.
+                        </p>
+                    </section>
+                    <!-- Metodologias -->
+                    <section id="metodologias" class="mb-5">
+                        <h2 class="fw-bolder mb-4 text-primary">Metodologias de Detecção e Análise</h2>
+                        <h5 class="fw-bold text-white">Processamento de Sinais Sísmicos</h5>
+                        <p class="text-white">
+                            O processamento de sinais sísmicos em ambientes extraterrestres requer técnicas adaptadas às condições específicas de cada corpo celeste. Métodos como a Transformada Rápida de Fourier (FFT) são utilizados para analisar as frequências dominantes nos dados sísmicos. Além disso, filtros digitais (passa-alta, passa-baixa, passa-banda) são aplicados para isolar sinais de interesse.
+                        </p>
+                        <h5 class="fw-bold text-white">Detecção de Eventos com STA/LTA</h5>
+                        <p class="text-white">
+                            A razão entre a média a curto prazo (Short-Term Average - STA) e a média a longo prazo (Long-Term Average - LTA) é uma técnica clássica para detecção de eventos sísmicos. Essa metodologia é eficaz para identificar mudanças abruptas na amplitude do sinal, indicando a ocorrência de um evento sísmico.
+                            <pre class="bg-dark text-white p-3">
+def sta_lta(signal, nsta, nlta):
+    sta = np.convolve(signal**2, np.ones(nsta)/nsta, mode='same')
+    lta = np.convolve(signal**2, np.ones(nlta)/nlta, mode='same')
+    return sta / lta
+                            </pre>
+                        </p>
+                        <h5 class="fw-bold text-white">Aplicação de Aprendizado de Máquina</h5>
+                        <p class="text-white">
+                            Técnicas de aprendizado de máquina, como redes neurais convolucionais (CNNs) e modelos baseados em aprendizado profundo, têm sido aplicadas para classificação e detecção de eventos sísmicos em grandes volumes de dados. Esses modelos podem aprender características complexas dos sinais e melhorar a taxa de detecção de eventos sutis.
+                        </p>
+                    </section>
+                    <!-- Dados e Análises -->
+                    <section id="dados" class="mb-5">
+                        <h2 class="fw-bolder mb-4 text-primary">Dados e Análises</h2>
+                        <h5 class="fw-bold text-white">Missões Apollo</h5>
+                        <p class="text-white">
+                            Os dados sísmicos das missões Apollo foram coletados usando sismômetros colocados em diferentes locais na superfície lunar. Esses dados apresentam desafios como ruído térmico e impactos de micrometeoritos. A análise desses dados permitiu a identificação de diferentes tipos de "lunamotos", classificados em rasos, profundos e térmicos.
+                        </p>
+                        <h5 class="fw-bold">Mars InSight Lander</h5>
+                        <p class="text-white">
+                            A missão InSight forneceu dados sísmicos de alta qualidade de Marte, permitindo a detecção de "martemotos" e a caracterização da estrutura interna do planeta. Os dados são disponibilizados em formato SEED e podem ser analisados usando bibliotecas como a ObsPy.
+                            <pre class="bg-dark text-white p-3">
+from obspy import read
+st = read("path_to_mars_insight_data")
+st.filter("bandpass", freqmin=0.1, freqmax=1.0)
+st.plot()
+                            </pre>
+                        </p>
+                        <h5 class="fw-bold text-white">Análise Espectral</h5>
+                        <p class="text-white">
+                            A análise espectral dos sinais sísmicos permite identificar modos de ressonância e frequências características do corpo celeste. Por exemplo, a análise dos dados da Lua revelou modos de vibração globais associados à sua estrutura interna.
+                        </p>
+                    </section>
+                    <!-- Desafios Técnicos -->
+                    <section id="desafios" class="mb-5">
+                        <h2 class="fw-bolder mb-4 text-primary">Desafios Técnicos</h2>
+                        <h5 class="fw-bold text-white">Limitações de Comunicação</h5>
+                        <p class="text-white">
+                            A banda limitada de comunicação e o alto custo energético de transmissão de dados requerem estratégias para reduzir a quantidade de dados enviados. Isso inclui compressão de dados, detecção e extração de eventos localmente e envio de apenas metadados ou segmentos de interesse.
+                        </p>
+                        <h5 class="fw- text-white">Ruído e Interferências</h5>
+                        <p class="text-white">
+                            Os dados sísmicos são frequentemente contaminados por ruídos ambientais e instrumentais. Técnicas avançadas de filtragem e processamento são necessárias para melhorar a relação sinal-ruído (SNR) e permitir a detecção de eventos de baixa amplitude.
+                        </p>
+                        <h5 class="fw-bold text-white">Calibração de Instrumentos</h5>
+                        <p class="text-white">
+                            A calibração precisa dos sismômetros é essencial para garantir a qualidade dos dados. Variações nas condições ambientais podem afetar a sensibilidade dos instrumentos, exigindo métodos de calibração in situ e monitoramento contínuo.
+                        </p>
+                    </section>
+                    <!-- Conclusão -->
+                    <section id="conclusao" class="mb-5">
+                        <h2 class="fw-bolder mb-4 text-primary">Conclusão</h2>
+                        <p class="text-white">
+                            A detecção sísmica no sistema solar é uma área de pesquisa em expansão, oferecendo insights valiosos sobre a estrutura e a dinâmica de outros corpos celestes. Apesar dos desafios técnicos, avanços em instrumentação, processamento de sinais e aprendizado de máquina estão impulsionando novas descobertas e abrindo caminho para futuras missões.
+                        </p>
+                        <p class="text-white">
+                            Pesquisadores e engenheiros são encorajados a colaborar e compartilhar conhecimentos para superar as limitações atuais e explorar plenamente o potencial dos dados sísmicos extraterrestres.
+                        </p>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Footer-->
+    <footer class="bg-white py-4 mt-auto">
+        <div class="container px-5">
+            <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                <div class="col-auto"><div class="small m-0">Copyright &copy; Seu Site 2023
+                </div></div>
+                <div class="col-auto">
+                    <a class="small" href="#!">Privacidade</a>
+                    <span class="mx-1">&middot;</span>
+                    <a class="small" href="#!">Termos</a>
+                    <span class="mx-1">&middot;</span>
+                    <a class="small" href="#!">Contato</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+</body>
+</html>
